@@ -1,0 +1,23 @@
+{
+  "name": "@1lib/javascript",
+  "version": "1.0.0",
+  "description": "Just import one javascript library to save everyone's time.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1lib/javascript.git"
+  },
+  "keywords": [
+    "library"
+  ],
+  "author": "kingcc",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/1lib/javascript/issues"
+  },
+  "main": "index.js",
+  "unpkg": "dist/1lib.min.js",
+  "homepage": "https://github.com/1lib/javascript#readme"
+}
