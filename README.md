@@ -33,6 +33,8 @@ const addTwoNumber = execute('+').$config({ param: { mode: 'object', number: 2 }
 
 addTwoNumber({ value1: 2, value2: 3 }); // => 5
 
+addTwoNumber({ someKey: 1 }); // => f :: { [string]: number } -> number
+
 ```
 
 ### Build
