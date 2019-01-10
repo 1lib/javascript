@@ -39,6 +39,10 @@ addTwoNumber({ value1: 2, value2: 3 }); // => 5
 ### Build
 
 ```
+# first, clone this repository
+$ git clone git@github.com:1lib/javascript.git
+
+# then, run npm command
 $ npm run build --silent # global
 
 # or build what you like
