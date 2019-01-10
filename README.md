@@ -10,7 +10,7 @@ $ npm install @lib/javascript --save
 ### Usage
 
 ```
-import { * as 1lib } from '@1lib/javascript';
+import * as 1lib from '@1lib/javascript';
 
 const add = 1lib.execute('+');
 
@@ -35,6 +35,16 @@ const addTwoNumber = execute.$set({ paramMode: 'object' }).$paramNumber(2);
 addTwoNumber({ value1: 2, value2: 3 }); // => 5
 
 ```
+
+### Build
+
+```
+$ npm run build --silent // global
+
+# or build what you like
+$ npm run partial-build functional --silent // building functional module only
+```
+
 
 ### Licence
 
