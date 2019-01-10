@@ -29,7 +29,7 @@ Using object-parameters:
 ```
 import { execute } from '@1lib/javascript';
 
-const addTwoNumber = execute.$config({ param: { mode: 'object', number: 2 } });
+const addTwoNumber = execute('+').$config({ param: { mode: 'object', number: 2 } });
 
 addTwoNumber({ value1: 2, value2: 3 }); // => 5
 
