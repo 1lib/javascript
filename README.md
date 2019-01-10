@@ -19,8 +19,7 @@ const add6 = add2(4);
 
 add6(1).done(); // => 7
 
-add.length = 3;
-const addThreeNumber = add;
+const addThreeNumber = add.$config({ param: { number: 3 } });
 
 addThreeNumber(1)(2)(3); // => 6   ** already currify **
 ```
@@ -30,7 +29,7 @@ Using object-parameters:
 ```
 import { execute } from '@1lib/javascript';
 
-const addTwoNumber = execute.$set({ paramMode: 'object' }).$paramNumber(2);
+const addTwoNumber = execute.$config({ param: { mode: 'object', number: 2 } });
 
 addTwoNumber({ value1: 2, value2: 3 }); // => 5
 
