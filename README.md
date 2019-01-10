@@ -25,14 +25,14 @@ const addThreeNumber = add;
 addThreeNumber(1)(2)(3); // => 6   ** already currify **
 ```
 
-Using deconstructor-parameters:
+Using object-parameters:
 
 ```
 import { execute } from '@1lib/javascript';
 
-const addTwoNumber = execute.$df().$parameterNumber(2);
+const addTwoNumber = execute.$set({ paramMode: 'object' }).$paramNumber(2);
 
-addTwoNumber(2, 3); // => 5
+addTwoNumber({ value1: 2, value2: 3 }); // => 5
 
 ```
 
