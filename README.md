@@ -39,10 +39,10 @@ addTwoNumber({ value1: 2, value2: 3 }); // => 5
 ### Build
 
 ```
-$ npm run build --silent // global
+$ npm run build --silent # global
 
 # or build what you like
-$ npm run partial-build functional --silent // building functional module only
+$ npm run partial-build functional --silent # building functional module only
 ```
 
 
