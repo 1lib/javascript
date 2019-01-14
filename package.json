@@ -19,5 +19,10 @@
   },
   "main": "index.js",
   "unpkg": "dist/1lib.min.js",
-  "homepage": "https://github.com/1lib/javascript#readme"
+  "homepage": "https://github.com/1lib/javascript#readme",
+  "devDependencies": {
+    "tslint": "^5.12.1",
+    "tslint-microsoft-contrib": "^6.0.0",
+    "typescript": "^3.2.2"
+  }
 }
