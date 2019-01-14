@@ -4,7 +4,7 @@
 ### Install
 
 ```
-$ npm install @lib/javascript --save
+$ npm install @1lib/javascript --save
 ```
 
 ### Usage
