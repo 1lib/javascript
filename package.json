@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "description": "Just import one javascript library to save everyone's time.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc --watch",
+    "test": "jest --watch",
+    "lint": "tslint -t stylish --project \"tsconfig.json\"",
+    "deploy": ""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/1lib/javascript.git"
   },
   "keywords": [
+    "typescript",
     "library"
   ],
   "author": "kingcc",
@@ -18,11 +22,33 @@
     "url": "https://github.com/1lib/javascript/issues"
   },
   "main": "index.js",
-  "unpkg": "dist/1lib.min.js",
+  "unpkg": "publish/1lib.min.js",
   "homepage": "https://github.com/1lib/javascript#readme",
   "devDependencies": {
+    "@types/jest": "^23.3.12",
+    "jest": "^23.6.0",
+    "prettier": "^1.15.3",
+    "ts-jest": "^23.10.5",
     "tslint": "^5.12.1",
+    "tslint-config-prettier": "^1.17.0",
     "tslint-microsoft-contrib": "^6.0.0",
     "typescript": "^3.2.2"
+  },
+  "dependencies": {
+    "tslib": "^1.9.3"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "source",
+    "testRegex": ".spec.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "coverageDirectory": "coverage",
+    "testEnvironment": "node"
   }
 }
