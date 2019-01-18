@@ -2,4 +2,4 @@ function noop() {
   // do nothing
 }
 
-export { noop };
+export default noop;
