@@ -2,8 +2,8 @@ import { isPlaceHolder } from '../_'
 
 
 export const ENTRY_CONFIGURATION_PARAM_MODE = {
-  PURE: 0,
-  OBJECT: 1,
+  PURE: 'PARAM_MODE_PURE',
+  OBJECT: 'PARAM_MODE_OBJECT',
 }
 
 const defaultConfiguration = {
@@ -40,11 +40,13 @@ function squash(target: any): any {
 			for (let x in flatObject) {
 				if (!flatObject.hasOwnProperty(x)) continue
 
-				toReturn[i + x.charAt(0).toUpperCase()] = flatObject[x]
+				toReturn[i + x.charAt(0).toUpperCase() + x.slice(1)] = flatObject[x]
 			}
+		} else if (Object.prototype.toString.call(target[i]) === '[object Array]'){
+			toReturn[i] = Array(...target[i])
 		} else {
-			toReturn[i] = target[i]
-		}
+      toReturn[i] = target[i]
+    }
   }
 
 	return toReturn
@@ -117,7 +119,7 @@ export default function Base(fn: Function, config: object = {}, param: object = 
     }
   }
 
-  entry._configuration = (<any>Object).assign({}, squash(defaultConfiguration), config)
+  entry._configuration = (<any>Object).assign({}, squash(defaultConfiguration), squash(config))
   entry._params = (<any>Object).assign({}, defaultParam, param)
 
   entry.$config = (config: object) => {

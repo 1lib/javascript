@@ -31,7 +31,7 @@ Using object-parameters:
 ```
 import { accumulate } from '@1lib/javascript';
 
-const addTwoNumber = accumulate({ type: '+' }).$config({ param: { mode: 'object', count: 3 } });
+const addTwoNumber = accumulate.$config({ param: { mode: 'PARAM_MODE_OBJECT', count: 3 } })({ type: '+' });
 
 addTwoNumber({ value1: 2, value2: 3 }); // => 5
 
