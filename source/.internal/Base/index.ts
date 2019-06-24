@@ -7,9 +7,11 @@ export const ENTRY_CONFIGURATION_PARAM_MODE = {
 }
 
 const defaultConfiguration = {
-  paramKeys: [],
-  paramNum: (<any>Number).MAX_SAFE_INTEGER,
-  paramMode: ENTRY_CONFIGURATION_PARAM_MODE.PURE,
+  param: {
+    count: (<any>Number).MAX_SAFE_INTEGER,
+    keys: [],
+    mode: ENTRY_CONFIGURATION_PARAM_MODE.PURE,
+  },
 }
 
 const defaultParam = {}
@@ -25,6 +27,27 @@ function getNextAvailableKey(target: object, defaults: Array<string> = []) {
 
   const numberKeys = keys.filter(Boolean).filter(key => !isNaN(<any>key))
   return String(Math.max(...<Array<any>>numberKeys, keys.length - 1) + 1)
+}
+
+function squash(target: any): any {
+	const toReturn = <any>{}
+
+	for (let i in target) {
+		if (!target.hasOwnProperty(i)) continue
+
+		if ((typeof target[i]) == 'object') {
+      let flatObject = squash(target[i])
+			for (let x in flatObject) {
+				if (!flatObject.hasOwnProperty(x)) continue
+
+				toReturn[i + x.charAt(0).toUpperCase()] = flatObject[x]
+			}
+		} else {
+			toReturn[i] = target[i]
+		}
+  }
+
+	return toReturn
 }
 
 export default function Base(fn: Function, config: object = {}, param: object = {}): Function {
@@ -55,7 +78,7 @@ export default function Base(fn: Function, config: object = {}, param: object = 
         }
 
         const validParamNum = (<any>Object).values(newParams).filter((param: object) => !isPlaceHolder(param)).length
-        if (validParamNum >= entry._configuration.paramNum) {
+        if (validParamNum >= entry._configuration.paramCount) {
           return fn(newParams)
         } else {
           return Base(fn, newConfig, newParams)
@@ -83,7 +106,7 @@ export default function Base(fn: Function, config: object = {}, param: object = 
           }
         }
 
-        if (Object.keys(argTotal).length >= entry._configuration.paramNum) {
+        if (Object.keys(argTotal).length >= entry._configuration.paramCount) {
           return fn(argTotal)
         } else {
           return Base(fn, { ...entry._configuration }, argTotal)
@@ -94,11 +117,11 @@ export default function Base(fn: Function, config: object = {}, param: object = 
     }
   }
 
-  entry._configuration = (<any>Object).assign({}, defaultConfiguration, config)
+  entry._configuration = (<any>Object).assign({}, squash(defaultConfiguration), config)
   entry._params = (<any>Object).assign({}, defaultParam, param)
 
   entry.$config = (config: object) => {
-    return Base(fn, { ...entry._configuration, ...config }, { ...entry._params })
+    return Base(fn, { ...entry._configuration, ...squash(config) }, { ...entry._params })
   }
   entry.$inspection = () => {
     if (entry._configuration.paramMode === ENTRY_CONFIGURATION_PARAM_MODE.OBJECT) {
@@ -109,7 +132,7 @@ export default function Base(fn: Function, config: object = {}, param: object = 
       }
     }
   }
-  entry.$exec = entry.$execute = () => {
+  entry.$done = entry.$execute = () => {
     entry.$inspection()
     return fn(entry._params)
   }

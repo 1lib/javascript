@@ -14,14 +14,14 @@ $ npm install @1lib/javascript --save
 ```
 import * as 1lib from '@1lib/javascript';
 
-const add = 1lib.execute('+');
+const add = 1lib.accumulate('+');
 
 const add2 = add(2);
 const add6 = add2(4);
 
-add6(1).done(); // => 7
+add6(1).$done(); // => 7
 
-const addThreeNumber = add.$config({ param: { number: 3 } });
+const addThreeNumber = add.$config({ param: { count: 3 } });
 
 addThreeNumber(1)(2)(3); // => 6   ** already currify **
 ```
@@ -29,15 +29,22 @@ addThreeNumber(1)(2)(3); // => 6   ** already currify **
 Using object-parameters:
 
 ```
-import { reduce } from '@1lib/javascript';
+import { accumulate } from '@1lib/javascript';
 
-const addTwoNumber = reduce('+').$config({ param: { mode: 'object', number: 2 } });
+const addTwoNumber = accumulate({ type: '+' }).$config({ param: { mode: 'object', count: 2 } });
 
 addTwoNumber({ value1: 2, value2: 3 }); // => 5
 
 addTwoNumber({ someKey: 1 }); // => f :: { [string]: number } -> number
 
 ```
+
+### Modules
+
+- [  ] Functional
+- [  ] Math
+  - [  ] accumulate
+- [  ] Tool
 
 ### Build
 
