@@ -15,20 +15,17 @@ $ npm install @1lib/javascript --save
 import * as 1lib from '@1lib/javascript';
 
 const add = 1lib.accumulate('+');
-
 const add2 = add(2);
 const add6 = add2(4);
-
 add6(1).$done(); // => 7
 
-const addThreeNumber = add.$config({ param: { count: 4 } }); // 3 numbers, 1 operator
-
+const addThreeNumber = add.$config({ param: { count: 4 } }); // receive 3 numbers and 1 operator
 addThreeNumber(1)(2)(3); // => 6   ** already currify **
 
-// you can also use the built-in placeholder, for example:
+// you can also use the built-in placeholder, like this:
 import { _ } from '@1lib/javascript';
-
 1lib.accumulate('*')(_, _, 3)(1)(2).$done(); // 1 * 2 * 3
+
 ```
 
 Using object-parameters:
@@ -39,8 +36,13 @@ import { accumulate } from '@1lib/javascript';
 const addTwoNumber = accumulate.$config({ param: { mode: 'PARAM_MODE_OBJECT', count: 3 } })({ type: '+' });
 
 addTwoNumber({ value1: 2, value2: 3 }); // => 5
-
 addTwoNumber({ someKey: 1 }); // => f :: { [string]: number } -> number
+
+// the advantage of using object-parameters is that
+// you don't care about the order in which parameters are passed.
+// exp:
+const threeNumbersHandle = accumulate.$config({ param: { mode: 'PARAM_MODE_OBJECT', count: 4 } }); // receive 3 numbers and 1 operator
+threeNumbersHandle({ number1: 2 })({ type: '*', number2: 3 })({ number3: 5 }); // => 30
 
 ```
 
