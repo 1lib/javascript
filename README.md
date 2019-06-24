@@ -24,6 +24,11 @@ add6(1).$done(); // => 7
 const addThreeNumber = add.$config({ param: { count: 4 } }); // 3 numbers, 1 operator
 
 addThreeNumber(1)(2)(3); // => 6   ** already currify **
+
+// you can also use the built-in placeholder, for example:
+import { _ } from '@1lib/javascript';
+
+1lib.accumulate('*')(_, _, 3)(1)(2).$done(); // 1 * 2 * 3
 ```
 
 Using object-parameters:

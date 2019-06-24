@@ -59,23 +59,29 @@ export default function Base(fn: Function, config: object = {}, param: object = 
         const newConfig = { ...entry._configuration }
         const newParams = { ...entry._params }
 
+        let insertPlaceHolderCount: number = 0
+
         for (const arg of args) {
-          let hasPlaceHolderUnderLoop
-          if (isPlaceHolder(arg) || hasPlaceHolderUnderLoop) {
+          let findPlaceHolder: boolean = false
+          let needJumpPlaceHolderCount: number = insertPlaceHolderCount
+
+          for (const [key, param] of (<any>Object).entries(newParams)) {
+            if (isPlaceHolder(param)) {
+              if (needJumpPlaceHolderCount-- > 0) continue
+
+              newParams[key] = arg
+              findPlaceHolder = true
+
+              break
+            }
+          }
+
+          if (!findPlaceHolder) {
             newParams[getNextAvailableKey(newParams, entry._configuration.paramKeys)] = arg
-            hasPlaceHolderUnderLoop = true
-          } else {
-            let findPlaceHolder
-            for (const [key, param] of (<any>Object).entries(newParams)) {
-              if (isPlaceHolder(param)) {
-                newParams[key] = arg
-                findPlaceHolder = true
-                break
-              }
-            }
-            if (!findPlaceHolder) {
-              newParams[getNextAvailableKey(newParams, entry._configuration.paramKeys)] = arg
-            }
+          }
+
+          if (isPlaceHolder(arg)) {
+            insertPlaceHolderCount++
           }
         }
 
