@@ -35,7 +35,7 @@ function squash(target: any): any {
 	for (let i in target) {
 		if (!target.hasOwnProperty(i)) continue
 
-		if ((typeof target[i]) == 'object') {
+		if (Object.prototype.toString.call(target[i]) === '[object Object]') {
       let flatObject = squash(target[i])
 			for (let x in flatObject) {
 				if (!flatObject.hasOwnProperty(x)) continue

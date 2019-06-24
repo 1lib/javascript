@@ -7,4 +7,4 @@ function accumulate(prop: { type: string }) {
   return (new Function('return ' + values.join(type)))()
 }
 
-export default Base(accumulate, { paramKeys: ['type'] })
+export default Base(accumulate, { param: { keys: ['type'] } })
