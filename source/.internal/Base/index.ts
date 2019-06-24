@@ -19,7 +19,7 @@ const defaultParam = {}
 function getNextAvailableKey(target: object, defaults: Array<string> = []) {
   const keys = Object.keys(target)
 
-  for(const defaultKey of defaults) {
+  for (const defaultKey of defaults) {
     if (keys.indexOf(defaultKey) === -1) {
       return defaultKey
     }
@@ -30,26 +30,26 @@ function getNextAvailableKey(target: object, defaults: Array<string> = []) {
 }
 
 function squash(target: any): any {
-	const toReturn = <any>{}
+  const toReturn = <any>{}
 
-	for (let i in target) {
-		if (!target.hasOwnProperty(i)) continue
+  for (let i in target) {
+    if (!target.hasOwnProperty(i)) continue
 
-		if (Object.prototype.toString.call(target[i]) === '[object Object]') {
+    if (Object.prototype.toString.call(target[i]) === '[object Object]') {
       let flatObject = squash(target[i])
-			for (let x in flatObject) {
-				if (!flatObject.hasOwnProperty(x)) continue
+      for (let x in flatObject) {
+        if (!flatObject.hasOwnProperty(x)) continue
 
-				toReturn[i + x.charAt(0).toUpperCase() + x.slice(1)] = flatObject[x]
-			}
-		} else if (Object.prototype.toString.call(target[i]) === '[object Array]'){
-			toReturn[i] = Array(...target[i])
-		} else {
+        toReturn[i + x.charAt(0).toUpperCase() + x.slice(1)] = flatObject[x]
+      }
+    } else if (Object.prototype.toString.call(target[i]) === '[object Array]') {
+      toReturn[i] = Array(...target[i])
+    } else {
       toReturn[i] = target[i]
     }
   }
 
-	return toReturn
+  return toReturn
 }
 
 export default function Base(fn: Function, config: object = {}, param: object = {}): Function {
