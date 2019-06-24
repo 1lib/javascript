@@ -21,7 +21,7 @@ const add6 = add2(4);
 
 add6(1).$done(); // => 7
 
-const addThreeNumber = add.$config({ param: { count: 3 } });
+const addThreeNumber = add.$config({ param: { count: 4 } }); // 3 numbers, 1 operator
 
 addThreeNumber(1)(2)(3); // => 6   ** already currify **
 ```
@@ -31,7 +31,7 @@ Using object-parameters:
 ```
 import { accumulate } from '@1lib/javascript';
 
-const addTwoNumber = accumulate({ type: '+' }).$config({ param: { mode: 'object', count: 2 } });
+const addTwoNumber = accumulate({ type: '+' }).$config({ param: { mode: 'object', count: 3 } });
 
 addTwoNumber({ value1: 2, value2: 3 }); // => 5
 
