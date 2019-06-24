@@ -41,10 +41,10 @@ addTwoNumber({ someKey: 1 }); // => f :: { [string]: number } -> number
 
 ### Modules
 
-- [  ] Functional
-- [  ] Math
-  - [  ] accumulate
-- [  ] Tool
+- [ ] Functional
+- [ ] Math
+  - [ ] accumulate
+- [ ] Tool
 
 ### Build
 
