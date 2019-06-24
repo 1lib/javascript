@@ -29,9 +29,9 @@ addThreeNumber(1)(2)(3); // => 6   ** already currify **
 Using object-parameters:
 
 ```
-import { execute } from '@1lib/javascript';
+import { reduce } from '@1lib/javascript';
 
-const addTwoNumber = execute('+').$config({ param: { mode: 'object', number: 2 } });
+const addTwoNumber = reduce('+').$config({ param: { mode: 'object', number: 2 } });
 
 addTwoNumber({ value1: 2, value2: 3 }); // => 5
 
