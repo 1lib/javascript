@@ -12,9 +12,9 @@ $ npm install @1lib/javascript --save
 ### Usage
 
 ```
-import * as 1lib from '@1lib/javascript';
+import * as lib from '@1lib/javascript';
 
-const add = 1lib.accumulate('+');
+const add = lib.accumulate('+');
 const add2 = add(2);
 const add6 = add2(4);
 add6(1).$done(); // => 7
@@ -24,7 +24,7 @@ addThreeNumber(1)(2)(3); // => 6   ** already currify **
 
 // you can also use the built-in placeholder, like this:
 import { _ } from '@1lib/javascript';
-1lib.accumulate('*')(_, _, 3)(1)(2).$done(); // 1 * 2 * 3
+lib.accumulate('*')(_, _, 3)(1)(2).$done(); // 1 * 2 * 3
 
 ```
 
