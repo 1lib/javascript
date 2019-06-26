@@ -15,7 +15,7 @@ const banner = `
    *     \____/                                /___/                                                 /_/
    *
    *    release:    https://github.com/1lib/javascript/releases/tag/v${pkg.version}
-   *    copyright:  (c) ${year > 2019 ? `2019-${year}` : '2019'} GPL3
+   *    copyright:  (c) ${year > 2019 ? `2019-${year}` : '2019'} ${pkg.author} authored & published by GPL3
    */
 `
 
@@ -24,7 +24,7 @@ const config = {
   output: {
     format: 'umd',
     file: 'build/main.js',
-    name: '1lib',
+    name: 'lib',
     exports: 'named',
     banner: banner
   },
