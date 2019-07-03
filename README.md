@@ -1,7 +1,7 @@
 @1lib/javascript
 ================
 
-** :man-gesturing-no: This project is UNDER CONSTRUCTION :writing_hand: **
+** :no-good: This project is UNDER CONSTRUCTION :writing_hand: **
 
 ### Install
 
@@ -48,10 +48,10 @@ threeNumbersHandle({ number1: 2 })({ type: '*', number2: 3 })({ number3: 5 }); /
 
 ### Modules
 
-- [ ] Functional
-- [ ] Math
+- [ ] functional
+- [ ] math
   - [ ] accumulate
-- [ ] Tool
+- [ ] tool
 
 ### Build
 
