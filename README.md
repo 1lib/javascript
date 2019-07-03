@@ -1,7 +1,7 @@
 @1lib/javascript
 ================
 
-** :no-good: This project is UNDER CONSTRUCTION :writing_hand: **
+** :no_good: This project is UNDER CONSTRUCTION :writing_hand: **
 
 ### Install
 
