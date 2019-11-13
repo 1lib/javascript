@@ -1,5 +1,6 @@
 {
-  "name": "javascript",
+  "name": "@1lib/javascript-monorepo",
+  "version": "1.0.0",
   "workspaces": [
     "modules/*"
   ],
