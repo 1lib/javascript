@@ -7,13 +7,13 @@
 
 ### Install
 
-```
+```sh
 $ npm install @1lib/javascript --save
 ```
 
 ### Usage
 
-```
+```js
 import * as lib from '@1lib/javascript';
 
 const add = lib.accumulate('+');
@@ -30,9 +30,9 @@ lib.accumulate('*')(_, _, 3)(1)(2).$done(); // 1 * 2 * 3
 
 ```
 
-Using object-parameters:
+Using object-parameters mode:
 
-```
+```js
 import { accumulate } from '@1lib/javascript';
 
 const addTwoNumber = accumulate.$config({ param: { mode: 'PARAM_MODE_OBJECT', count: 3 } })({ type: '+' });
@@ -42,7 +42,7 @@ addTwoNumber({ someKey: 1 }); // => f :: { [string]: number } -> number
 
 // the advantage of using object-parameters is that
 // you don't care about the order in which parameters are passed.
-// exp:
+// for example:
 const threeNumbersHandle = accumulate.$config({ param: { mode: 'PARAM_MODE_OBJECT', count: 4 } }); // receive 3 numbers and 1 operator
 threeNumbersHandle({ number1: 2 })({ type: '*', number2: 3 })({ number3: 5 }); // => 30
 
@@ -70,7 +70,7 @@ threeNumbersHandle({ number1: 2 })({ type: '*', number2: 3 })({ number3: 5 }); /
 
 ### Build
 
-```
+```sh
 # First, clone this repository
 $ git clone git@github.com:1lib/javascript.git
 
@@ -81,9 +81,10 @@ $ npm run build --silent # global
 $ npm run partial-build functional --silent # building functional module only
 ```
 
-### Dev
+### Develop
 
-```
+```sh
+# Initial project dependencies
 $ npm run bootstrap
 ```
 
