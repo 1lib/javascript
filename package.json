@@ -1,16 +1,10 @@
 {
-  "name": "@1lib/javascript",
-  "version": "1.0.0",
-  "description": "Just import one javascript library to save everyone's time.",
-  "scripts": {
-    "clean": "rm -rf compile build publish",
-    "compile": "npm run clean && tsc",
-    "build": "npm run compile && NODE_ENV=development rollup -c",
-    "build:prod": "npm run compile && NODE_ENV=production rollup -c",
-    "publish": "",
-    "test": "jest",
-    "lint": "tslint -t stylish --project \"tsconfig.json\"",
-    "deploy": ""
+  "name": "javascript",
+  "workspaces": [
+    "modules/*"
+  ],
+  "engines": {
+    "node": ">=12.0.0"
   },
   "repository": {
     "type": "git",
@@ -25,34 +19,24 @@
   "bugs": {
     "url": "https://github.com/1lib/javascript/issues"
   },
-  "main": "build/main.js",
   "homepage": "https://github.com/1lib/javascript#readme",
   "devDependencies": {
-    "@types/jest": "^23.3.14",
-    "jest": "^23.6.0",
-    "prettier": "^1.15.3",
-    "rollup": "^1.16.2",
-    "rollup-plugin-node-resolve": "^5.1.0",
-    "rollup-plugin-uglify": "^6.0.2",
-    "ts-jest": "^23.10.5",
-    "tslib": "^1.9.3",
-    "tslint": "^5.12.1",
-    "tslint-config-prettier": "^1.17.0",
-    "tslint-microsoft-contrib": "^6.0.0",
-    "typescript": "^3.2.2"
+    "husky": "^3.0.9",
+    "lerna": "^3.18.3"
   },
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "ts"
-    ],
-    "rootDir": "source",
-    "testRegex": ".spec.ts$",
-    "transform": {
-      "^.+\\.(t|j)s$": "ts-jest"
-    },
-    "coverageDirectory": "coverage",
-    "testEnvironment": "node"
+  "scripts": {
+    "bootstrap": "lerna bootstrap && lerna run bootstrap --stream",
+    "clean": "lerna run clean --stream",
+    "compile": "lerna run compile --stream",
+    "build": "lerna run build:prod --stream",
+    "publish": "lerna publish",
+    "test": "lerna run test --stream",
+    "lint": "lerna run lint --stream"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run test"
+    }
   }
 }

@@ -1,7 +1,7 @@
 import 'jest'
 
 import accumulate from './index'
-import _ from '../../tool/_'
+import _ from '@1lib/core/source/placeholder'
 
 const part = (name: string): string => `Math::accumulate - ${name}`
 

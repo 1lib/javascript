@@ -20,7 +20,7 @@ const banner = `
 `
 
 const config = {
-  input: 'compile/source/index.js',
+  input: 'compile/index.js',
   output: {
     format: 'umd',
     file: 'build/main.js',

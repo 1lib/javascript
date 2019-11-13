@@ -1,7 +1,9 @@
 @1lib/javascript
 ================
 
-** :no_good: This project is UNDER CONSTRUCTION :writing_hand: **
+[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
+
+:no_good: **This project is UNDER CONSTRUCTION** :writing_hand:
 
 ### Install
 
@@ -48,10 +50,23 @@ threeNumbersHandle({ number1: 2 })({ type: '*', number2: 3 })({ number3: 5 }); /
 
 ### Modules
 
-- [ ] functional
-- [ ] math
-  - [ ] accumulate
-- [ ] tool
+1. core
+   
+  | name | description | status |
+  | :--- | :---------: | :----: |
+  | ma   |             |   []   |
+
+2. functional
+
+  | name       | description | status |
+  | :--------- | :---------: | :----: |
+  | accumulate |             |   []   |
+
+3. reactive
+   
+  | name | description | status |
+  | :--- | :---------: | :----: |
+  | map  |             |   []   |
 
 ### Build
 
@@ -66,6 +81,11 @@ $ npm run build --silent # global
 $ npm run partial-build functional --silent # building functional module only
 ```
 
+### Dev
+
+```
+$ npm run bootstrap
+```
 
 ### Licence
 

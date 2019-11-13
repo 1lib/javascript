@@ -1,4 +1,4 @@
-import Base from '../../.internal/Base'
+import Base from '@1lib/core/source/builder'
 
 function accumulate(prop: { type: string }) {
   const type: string = prop.type

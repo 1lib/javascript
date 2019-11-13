@@ -1,4 +1,4 @@
-import { isPlaceHolder } from '../_'
+import { isPlaceHolder } from '../placeholder'
 
 
 export const ENTRY_CONFIGURATION_PARAM_MODE = {

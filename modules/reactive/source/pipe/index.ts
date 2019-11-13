@@ -6,7 +6,6 @@ export default function pipe(data: any): any {
       return this._data
     }
 
-
   }
 
   return toReturn
