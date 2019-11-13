@@ -3,7 +3,7 @@
 
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 
-:no_good: **This project is UNDER CONSTRUCTION** :writing_hand:
+:no_good: **THIS PROJECT STILL UNDER CONSTRUCTION** :writing_hand:
 
 ### Install
 
