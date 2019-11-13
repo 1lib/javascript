@@ -1,12 +1,5 @@
-export const LIB_NAME = '1lib'
+import { dependencies } from '../package.json'
 
-export const MODULES = [
-  'core',
-
-  'functional',
-  'reactive',
-]
-
-for (const MODULE of MODULES) {
-  import(`@${LIB_NAME}/${MODULE}/source`)
+for (const dependency of Object.keys(dependencies)) {
+  import(dependency)
 }

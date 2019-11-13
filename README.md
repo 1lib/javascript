@@ -71,13 +71,13 @@ threeNumbersHandle({ number1: 2 })({ type: '*', number2: 3 })({ number3: 5 }); /
 ### Build
 
 ```
-# first, clone this repository
+# First, clone this repository
 $ git clone git@github.com:1lib/javascript.git
 
-# then, run npm command
+# Then, run npm command
 $ npm run build --silent # global
 
-# or build what you like
+# Or build what you like
 $ npm run partial-build functional --silent # building functional module only
 ```
 

@@ -26,8 +26,12 @@
     "lerna": "^3.18.3"
   },
   "scripts": {
-    "bootstrap": "lerna bootstrap && lerna run bootstrap --stream",
-    "clean": "lerna run clean --stream",
+    "bootstrap": "npm run bootstrap:monorepo && npm run bootstrap:modules",
+    "bootstrap:modules": "lerna bootstrap",
+    "bootstrap:monorepo": "npm install",
+    "clean": "npm run clean:modules && npm run clean:monorepo",
+    "clean:modules": "lerna run clean --stream",
+    "clean:monorepo": "lerna clean",
     "compile": "lerna run compile --stream",
     "build": "lerna run build:prod --stream",
     "publish": "lerna publish",
