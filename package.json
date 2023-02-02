@@ -23,7 +23,7 @@
   "homepage": "https://github.com/1lib/javascript#readme",
   "devDependencies": {
     "husky": "^3.0.9",
-    "lerna": "^3.18.3"
+    "lerna": "^6.4.1"
   },
   "scripts": {
     "bootstrap": "npm run bootstrap:monorepo && npm run bootstrap:modules",
